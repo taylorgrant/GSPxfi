@@ -6,7 +6,7 @@
 #'
 #' @param sheet The name or number of the sheet within the workbook
 #' @param full_range The lower range that the sheet covers (e.g., B43)
-#' @param email A google email to authenticate with \code{"\link[googlesheets4]{googlesheets4-package}}
+#' @param email A google email to authenticate with \code{\link[googlesheets4]{googlesheets4-package}}
 #'
 #' @return Dataframe with the LOB, the matrix/social platform name, and the link associated with each
 #' @export
@@ -23,7 +23,7 @@ get_matrix_ids <- function(sheet, full_range, email) {
   # read in text format
   list_text <- googlesheets4::read_sheet(ss, sheet = sheet) |>
     janitor::clean_names() |>
-    dplyr::select(lob, q324_matrix) |>
+    dplyr::select(1:2) |>
     tidyr::fill(lob, .direction = "down")
   # read in hyperlinks
   cells <- googlesheets4::range_read_cells(ss, sheet = sheet, range = glue::glue("A1:{full_range}"), cell_data = "full")
@@ -36,9 +36,9 @@ get_matrix_ids <- function(sheet, full_range, email) {
     }
   }
   # use function
-  hyperlinks <- cells %>%
+  hyperlinks <- cells |>
     dplyr::mutate(hyperlink = purrr::map_chr(cell, extract_hyperlink)) |>
-    dplyr::filter(str_detect(loc, "^B")) |>
+    dplyr::filter(stringr::str_detect(loc, "^B")) |>
     dplyr::filter(row != 1) |>
     dplyr::select(hyperlink)
   # bind together
