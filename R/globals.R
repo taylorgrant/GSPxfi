@@ -1,1 +1,8 @@
-utils::globalVariables(c("cell", "hyperlink", "lob", "loc"))
+utils::globalVariables(c("cell", "hyperlink", "lob", "loc",
+                         "ad_unit", "campaign_tactic", "click_thru_url", "creative_agency",
+                         "creative_end_date", "creative_launch_date", "cta", "customer_type",
+                         "flight_date_end_date", "flight_date_start_date", "flight_start_date",
+                         "geographic_target",
+                         "market" ,"matrix_data", "mmm_category", "name" ,"placement_name",
+                         "post_headline", "post_text", "price_point", "prisma_io_campaign_name",
+                         "required_field_for_creative_launch", "sheet_names"))
