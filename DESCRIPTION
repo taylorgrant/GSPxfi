@@ -4,7 +4,7 @@ Version: 0.0.0.9000
 Authors@R: 
     person("Taylor", "Grant", , "taylor_grant@gspsf.com", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: Merge and summarize paid media data from Sprinklr and Google 
+Description: Merge and summarize paid media data from Sprinklr and Google Sheets. 
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -16,6 +16,7 @@ Imports:
     glue,
     googlesheets4,
     janitor,
+    lubridate,
     purrr,
     stringr,
     tidyr
