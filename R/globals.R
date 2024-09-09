@@ -10,4 +10,7 @@ utils::globalVariables(c("cell", "hyperlink", "lob", "loc",
                          "c_billing_code", "c_campaign_objective", "c_campaign_type",
                          "c_client_code", "c_mmm_category", "c_quarter", "c_target_code",
                          "c_year", "index", "new", "old",
-                         "paid_initiative_name", "part1", "part2"))
+                         "paid_initiative_name", "part1", "part2",
+                         "Merged", "ad_account", "ad_objective", "ad_post_permalink", "campaign_name",
+                         "impressions", "platform_position", "spend", "sprinklr_data",
+                         "total_results"))
