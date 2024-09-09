@@ -17,6 +17,6 @@ Placement nomenclatures occasionally fall apart. This gets around that. Clunky b
 }
 \examples{
 \dontrun{
-sprinklr_data |> massive_cw()
+This gets used in tandem with appply_nomenclature()
 }
 }

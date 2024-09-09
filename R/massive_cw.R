@@ -9,7 +9,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' sprinklr_data |> massive_cw()
+#' This gets used in tandem with appply_nomenclature()
 #' }
 massive_cw <- function(tbl){
   tbl |>
