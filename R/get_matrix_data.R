@@ -11,7 +11,7 @@
 #' @examples
 #' \dontrun{
 #' test <- get_matrix_data(master_ids, line = "West",
-#' platform = "Meta", email = "taylor_grant@gspsf.com")
+#' platform = "Meta", email = "first_last@email.com")
 #' }
 get_matrix_data <- function(master_ids,
                             line = c("Central", "Internet/Product Diff", "NED",
