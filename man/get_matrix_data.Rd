@@ -31,6 +31,6 @@ Read in the line items from Social Matrix sheets
 \examples{
 \dontrun{
 test <- get_matrix_data(master_ids, line = "West",
-platform = "Meta", email = "taylor_grant@gspsf.com")
+platform = "Meta", email = "first_last@email.com")
 }
 }

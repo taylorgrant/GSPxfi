@@ -2,3 +2,4 @@
 
 export(get_matrix_data)
 export(get_matrix_ids)
+export(read_sprinklr)
