@@ -19,5 +19,9 @@ Imports:
     lubridate,
     purrr,
     readxl,
+    stringi,
     stringr,
+    tibble,
     tidyr
+Depends: 
+    R (>= 2.10)

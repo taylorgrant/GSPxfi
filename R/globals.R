@@ -6,4 +6,8 @@ utils::globalVariables(c("cell", "hyperlink", "lob", "loc",
                          "market" ,"matrix_data", "mmm_category", "name" ,"placement_name",
                          "post_headline", "post_text", "price_point", "prisma_io_campaign_name",
                          "required_field_for_creative_launch", "sheet_names",
-                         "ad_variant_name", "spent_in_usd_sum"))
+                         "ad_variant_name", "spent_in_usd_sum",
+                         "c_billing_code", "c_campaign_objective", "c_campaign_type",
+                         "c_client_code", "c_mmm_category", "c_quarter", "c_target_code",
+                         "c_year", "index", "new", "old",
+                         "paid_initiative_name", "part1", "part2"))
