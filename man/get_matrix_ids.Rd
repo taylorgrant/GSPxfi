@@ -20,6 +20,9 @@ Dataframe with the LOB, the matrix/social platform name, and the link associated
 The Xfinity social matrices list is the overall sheet that contains hyperlinks to each
 social matrix. The social matrices cover all social channels for each LOB of Xfinity.
 }
+\details{
+Note that the user is required to have the workbook ID of the sheet saved as an environmental variable \code{XFI_MATRIX_ID}
+}
 \examples{
 \dontrun{
 q3_matrices <- get_matrix_ids(sheet = 3, full_range = "B43", email = first_last.email.com)
