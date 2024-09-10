@@ -13,4 +13,47 @@ utils::globalVariables(c("cell", "hyperlink", "lob", "loc",
                          "paid_initiative_name", "part1", "part2",
                          "Merged", "ad_account", "ad_objective", "ad_post_permalink", "campaign_name",
                          "impressions", "platform_position", "spend", "sprinklr_data",
-                         "total_results"))
+                         "total_results",
+                         "additional_text", "avg_duration", "board", "body_copy", "channel" ,"clicks_sum",
+                         "creative_asset", "discover_title_headline", "facebook_avg_duration_of_video_played_sum",
+                         "facebook_device", "facebook_landing_page_views_sum", "facebook_lead_facebook_pixel_sum",
+                         "facebook_link_clicks_sum", "facebook_position", "facebook_post_comments_sum",
+                         "facebook_post_engagement_sum", "facebook_post_likes_sum", "facebook_post_shares_sum",
+                         "facebook_publisher_platform", "facebook_purchase_facebook_pixel_sum", "facebook_video_plays_3_sec_sum",
+                         "facebook_video_plays_sum", "facebook_video_plays_to_100_percent_sum", "facebook_video_plays_to_25_percent_sum",
+                         "facebook_video_plays_to_50_percent_sum", "facebook_video_plays_to_75_percent_sum", "headline",
+                         "impressions_sum", "offer_text","pin_description", "pin_headline", "pinterest_checkout_click_through_sum",
+                         "pinterest_checkout_view_through_sum", "pinterest_engagement_sum", "pinterest_outbound_clicks_sum",
+                         "pinterest_paid_video_view_average_watch_time_in_seconds_avg",
+                         "pinterest_placement", "pinterest_saves_sum",
+                         "pinterest_total_3_sec_video_views_sum", "pinterest_total_conversions_sum",
+                         "pinterest_total_mrc_video_views_sum", "pinterest_total_video_watches_at_100_percent_sum",
+                         "pinterest_total_video_watches_at_25_percent_sum",
+                         "pinterest_total_video_watches_at_50_percent_sum",
+                         "pinterest_total_video_watches_at_75_percent_sum", "platform",
+                         "platform_leads", "platform_site_visits","reddit_3_second_views_sum",
+                         "reddit_full_video_views_sum",
+                         "reddit_video_starts_sum", "reddit_video_views_sum", "reddit_watches_at_100_percent_sum",
+                         "reddit_watches_at_25_percent_sum", "reddit_watches_at_50_percent_sum",
+                         "reddit_watches_at_75_percent_sum", "snapchat_avg_screen_time_sum",
+                         "snapchat_avg_view_time_avg", "snapchat_clicks_sum", "snapchat_conversion_purchases_sum",
+                         "snapchat_daily_frequency_sum", "snapchat_quartile_1_sum", "snapchat_quartile_2_sum",
+                         "snapchat_quartile_3_sum", "snapchat_saves_sum", "snapchat_shares_sum",
+                         "snapchat_story_completes_sum", "snapchat_story_opens_sum",
+                         "snapchat_unique_reach_sum", "snapchat_video_views_sum",
+                         "snapchat_view_completion_sum", "spark_note",
+                         "tik_tok_15_second_views_focused_view_sum", "tik_tok_2s_video_views_sum",
+                         "tik_tok_6_second_views_focused_view_sum", "tik_tok_6s_video_views_sum",
+                         "tik_tok_average_watch_time_per_video_view_avg", "tik_tok_comments_sum",
+                         "tik_tok_follows_sum", "tik_tok_likes_sum", "tik_tok_profile_visits_sum",
+                         "tik_tok_shares_sum", "tik_tok_video_views_at_100_percent_sum",
+                         "tik_tok_video_views_at_25_percent_sum", "tik_tok_video_views_at_50_percent_sum",
+                         "tik_tok_video_views_at_75_percent_sum", "tik_tok_video_views_sum",
+                         "total_results_for_objective_sum"))
+
+
+
+
+
+
+
