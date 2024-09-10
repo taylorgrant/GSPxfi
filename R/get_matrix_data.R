@@ -22,6 +22,10 @@ get_matrix_data <- function(master_ids,
   # authenticate googledrive & googlesheets
   options(gargle_oauth_email = email)
 
+  if (line == "Retargeting" && !platform %in% c("Meta", "Pinterest")) {
+    stop("\nFunction Stopped: Retargeting tactics are only used with Meta & Pinterest")
+  }
+
   # filter the master IDs down to the link that we're interested in
   tmp_links <- master_ids |>
     dplyr::filter(dplyr::if_any(2, ~ . == platform) &
@@ -54,33 +58,175 @@ get_matrix_data <- function(master_ids,
 
   # function to get all placement data from each sheet
   get_sheet_data <- function(link, sheet) {
-    name_lookup <- c(placement_name = "placement_name_new",
-                     placement_name = "new_placement_name",
-                     post_text = "post_copy")
+    if (platform == "Meta") {
+      name_lookup <- c(placement_name = "placement_name_new",
+                       placement_name = "new_placement_name",
+                       post_text = "post_copy")
 
-    googlesheets4::read_sheet(link, sheet = sheet) |>
-      janitor::row_to_names(row_number = 2) |>
-      janitor::clean_names() |>
-      # rename any columns that don't have the same names
-      dplyr::rename(dplyr::any_of(name_lookup)) |>
-      dplyr::filter(!is.na(required_field_for_creative_launch)) |>
-      dplyr::filter(!stringr::str_detect(required_field_for_creative_launch, "^Creative Friendly Name")) |>
-      dplyr::mutate(dplyr::across(dplyr::matches("date"), ~lapply(., as.character))) |>
-      tidyr::unnest(cols = c(flight_start_date, creative_launch_date,
-                             creative_end_date,
-                             flight_date_start_date, flight_date_end_date),
-                    keep_empty = TRUE) |>
-      dplyr::mutate(dplyr::across(dplyr::matches("date"), lubridate::ymd),
-                    placement_name = stringr::str_replace_all(placement_name, " _", "_"),
-                    placement_name = ifelse(stringr::str_count(placement_name, "_") == 0, NA, placement_name) # if there aren't underscores, NA
-      ) |>
-      # keep only lines with a placement name (or should it be prisma campaign name?)
-      dplyr::filter(!is.na(placement_name)) |>
-      # keeping certain columns
-      dplyr::select(required_field_for_creative_launch, flight_date_start_date, flight_date_end_date,
-                    creative_agency, mmm_category, ad_unit, price_point, cta,
-                    post_text, post_headline, campaign_tactic, customer_type, geographic_target,
-                    market, click_thru_url, prisma_io_campaign_name, placement_name)
+      googlesheets4::read_sheet(link, sheet = sheet) |>
+        janitor::row_to_names(row_number = 2) |>
+        janitor::clean_names() |>
+        # rename any columns that don't have the same names
+        dplyr::rename(dplyr::any_of(name_lookup)) |>
+        dplyr::filter(!is.na(required_field_for_creative_launch)) |>
+        dplyr::filter(!stringr::str_detect(required_field_for_creative_launch, "^Creative Friendly Name")) |>
+        dplyr::mutate(dplyr::across(dplyr::matches("date"), ~lapply(., as.character))) |>
+        tidyr::unnest(cols = c(flight_start_date, creative_launch_date,
+                               creative_end_date,
+                               flight_date_start_date, flight_date_end_date),
+                      keep_empty = TRUE) |>
+        dplyr::mutate(dplyr::across(dplyr::matches("date"), lubridate::ymd),
+                      placement_name = stringr::str_replace_all(placement_name, " _", "_"),
+                      placement_name = ifelse(stringr::str_count(placement_name, "_") == 0, NA, placement_name) # if there aren't underscores, NA
+        ) |>
+        # keep only lines with a placement name (or should it be prisma campaign name?)
+        dplyr::filter(!is.na(placement_name)) |>
+        # keeping certain columns
+        dplyr::select(required_field_for_creative_launch, flight_date_start_date, flight_date_end_date,
+                      creative_agency, mmm_category, ad_unit, price_point, cta,
+                      post_text, post_headline, campaign_tactic, customer_type, geographic_target,
+                      market, click_thru_url, prisma_io_campaign_name, placement_name)
+
+    } else if (platform == "Snapchat") {
+      name_lookup <- c(placement_name = "placement_name_new",
+                       placement_name = "new_placement_name")
+
+      googlesheets4::read_sheet(link, sheet = sheet) |>
+        janitor::row_to_names(row_number = 2) |>
+        janitor::clean_names() |>
+        # rename any columns that don't have the same names
+        dplyr::rename(dplyr::any_of(name_lookup)) |>
+        dplyr::filter(!is.na(required_field_for_creative_launch)) |>
+        dplyr::filter(!stringr::str_detect(required_field_for_creative_launch, "^Creative Friendly Name")) |>
+        dplyr::mutate(dplyr::across(dplyr::matches("date"), ~lapply(., as.character))) |>
+        tidyr::unnest(cols = c(flight_start_date, creative_launch_date,
+                               creative_end_date,
+                               flight_date_start_date, flight_date_end_date),
+                      keep_empty = TRUE) |>
+        dplyr::mutate(dplyr::across(dplyr::matches("date"), lubridate::ymd),
+                      placement_name = stringr::str_replace_all(placement_name, " _", "_"),
+                      placement_name = ifelse(stringr::str_count(placement_name, "_") == 0, NA, placement_name) # if there aren't underscores, NA
+        ) |>
+        # keep only lines with a placement name (or should it be prisma campaign name?)
+        dplyr::filter(!is.na(placement_name)) |>
+        dplyr::select(required_field_for_creative_launch, flight_date_start_date, flight_date_end_date,
+                      creative_agency, mmm_category, ad_unit, price_point, cta, creative_asset,
+                      headline, discover_title_headline, campaign_tactic, customer_type, geographic_target,
+                      market, click_thru_url, prisma_io_campaign_name, placement_name)
+
+    } else if (platform == "Nextdoor") {
+      name_lookup <- c(placement_name = "placement_name_new",
+                       placement_name = "new_placement_name")
+
+      googlesheets4::read_sheet(link, sheet = sheet) |>
+        janitor::row_to_names(row_number = 2) |>
+        janitor::clean_names() |>
+        # rename any columns that don't have the same names
+        dplyr::rename(dplyr::any_of(name_lookup)) |>
+        dplyr::filter(!is.na(required_field_for_creative_launch)) |>
+        dplyr::filter(!stringr::str_detect(required_field_for_creative_launch, "^Creative Friendly Name")) |>
+        dplyr::mutate(dplyr::across(dplyr::matches("date"), ~lapply(., as.character))) |>
+        tidyr::unnest(cols = c(flight_start_date, creative_launch_date,
+                               creative_end_date,
+                               flight_date_start_date, flight_date_end_date),
+                      keep_empty = TRUE) |>
+        dplyr::mutate(dplyr::across(dplyr::matches("date"), lubridate::ymd),
+                      placement_name = stringr::str_replace_all(placement_name, " _", "_"),
+                      placement_name = ifelse(stringr::str_count(placement_name, "_") == 0, NA, placement_name) # if there aren't underscores, NA
+        ) |>
+        # keep only lines with a placement name (or should it be prisma campaign name?)
+        dplyr::filter(!is.na(placement_name)) |>
+        dplyr::select(required_field_for_creative_launch, flight_date_start_date, flight_date_end_date,
+                      creative_agency, mmm_category, ad_unit, price_point, cta, creative_asset,
+                      headline, body_copy, offer_text, campaign_tactic, customer_type, geographic_target,
+                      market, click_thru_url, prisma_io_campaign_name, placement_name)
+
+    } else if (platform == "Pinterest") {
+      name_lookup <- c(placement_name = "placement_name_new",
+                       placement_name = "new_placement_name")
+
+      googlesheets4::read_sheet(link, sheet = sheet) |>
+        janitor::row_to_names(row_number = 2) |>
+        janitor::clean_names() |>
+        # rename any columns that don't have the same names
+        dplyr::rename(dplyr::any_of(name_lookup)) |>
+        dplyr::filter(!is.na(required_field_for_creative_launch)) |>
+        dplyr::filter(!stringr::str_detect(required_field_for_creative_launch, "^Creative Friendly Name")) |>
+        dplyr::mutate(dplyr::across(dplyr::matches("date"), ~lapply(., as.character)),
+                      prisma_io_campaign_name = unlist(prisma_io_campaign_name),
+                      prisma_io_campaign_name = as.character(prisma_io_campaign_name)) |>
+        tidyr::unnest(cols = c(flight_start_date, creative_launch_date,
+                               creative_end_date,
+                               flight_date_start_date, flight_date_end_date),
+                      keep_empty = TRUE) |>
+        dplyr::mutate(dplyr::across(dplyr::matches("date"), lubridate::ymd),
+                      placement_name = stringr::str_replace_all(placement_name, " _", "_"),
+                      placement_name = ifelse(stringr::str_count(placement_name, "_") == 0, NA, placement_name) # if there aren't underscores, NA
+        ) |>
+        # keep only lines with a placement name (or should it be prisma campaign name?)
+        dplyr::filter(!is.na(placement_name)) |>
+        dplyr::select(required_field_for_creative_launch, flight_date_start_date, flight_date_end_date,
+                      creative_agency, mmm_category, ad_unit, price_point, cta, creative_asset,
+                      pin_description, pin_headline, board, campaign_tactic, customer_type, geographic_target,
+                      market, click_thru_url, prisma_io_campaign_name, placement_name)
+
+    } else if (platform == "Reddit") {
+      name_lookup <- c(placement_name = "placement_name_new",
+                       placement_name = "new_placement_name")
+
+      googlesheets4::read_sheet(link, sheet = sheet) |>
+        janitor::row_to_names(row_number = 2) |>
+        janitor::clean_names() |>
+        # rename any columns that don't have the same names
+        dplyr::rename(dplyr::any_of(name_lookup)) |>
+        dplyr::filter(!is.na(required_field_for_creative_launch)) |>
+        dplyr::filter(!stringr::str_detect(required_field_for_creative_launch, "^Creative Friendly Name")) |>
+        dplyr::mutate(dplyr::across(dplyr::matches("date"), ~lapply(., as.character)),
+                      prisma_io_campaign_name = unlist(prisma_io_campaign_name),
+                      prisma_io_campaign_name = as.character(prisma_io_campaign_name)) |>
+        tidyr::unnest(cols = c(flight_start_date, creative_launch_date,
+                               creative_end_date,
+                               flight_date_start_date, flight_date_end_date),
+                      keep_empty = TRUE) |>
+        dplyr::mutate(dplyr::across(dplyr::matches("date"), lubridate::ymd),
+                      placement_name = stringr::str_replace_all(placement_name, " _", "_"),
+                      placement_name = ifelse(stringr::str_count(placement_name, "_") == 0, NA, placement_name) # if there aren't underscores, NA
+        ) |>
+        # keep only lines with a placement name (or should it be prisma campaign name?)
+        dplyr::filter(!is.na(placement_name)) |>
+        dplyr::select(required_field_for_creative_launch, flight_date_start_date, flight_date_end_date,
+                      creative_agency, mmm_category, ad_unit, price_point, cta, creative_asset,
+                      post_headline, additional_text, campaign_tactic, customer_type, geographic_target,
+                      market, click_thru_url, prisma_io_campaign_name, placement_name)
+    } else if (platform == "TikTok") {
+      name_lookup <- c(placement_name = "placement_name_new",
+                       placement_name = "new_placement_name")
+
+      googlesheets4::read_sheet(link, sheet = sheet) |>
+        janitor::row_to_names(row_number = 2) |>
+        janitor::clean_names() |>
+        # rename any columns that don't have the same names
+        dplyr::rename(dplyr::any_of(name_lookup)) |>
+        dplyr::filter(!is.na(required_field_for_creative_launch)) |>
+        dplyr::filter(!stringr::str_detect(required_field_for_creative_launch, "^Creative Friendly Name")) |>
+        dplyr::mutate(dplyr::across(dplyr::matches("date"), ~lapply(., as.character)),
+                      prisma_io_campaign_name = unlist(prisma_io_campaign_name),
+                      prisma_io_campaign_name = as.character(prisma_io_campaign_name)) |>
+        tidyr::unnest(cols = c(flight_start_date, creative_launch_date,
+                               creative_end_date,
+                               flight_date_start_date, flight_date_end_date),
+                      keep_empty = TRUE) |>
+        dplyr::mutate(dplyr::across(dplyr::matches("date"), lubridate::ymd),
+                      placement_name = stringr::str_replace_all(placement_name, " _", "_"),
+                      placement_name = ifelse(stringr::str_count(placement_name, "_") == 0, NA, placement_name) # if there aren't underscores, NA
+        ) |>
+        # keep only lines with a placement name (or should it be prisma campaign name?)
+        dplyr::filter(!is.na(placement_name)) |>
+        dplyr::select(required_field_for_creative_launch, flight_date_start_date, flight_date_end_date,
+                      creative_agency, mmm_category, ad_unit, price_point, cta, creative_asset,
+                      post_text, campaign_tactic, customer_type, geographic_target,
+                      market, click_thru_url, prisma_io_campaign_name, placement_name)
+    }
   }
   out <- tmpout |>
     dplyr::mutate(matrix_data = purrr::map2(hyperlink, name, get_sheet_data)) |>
