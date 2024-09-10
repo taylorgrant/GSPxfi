@@ -52,6 +52,10 @@ apply_nomenclature <- function(tbl) {
                   # if a hyphen in creative part, keep as spark creative note
                   spark_note = stringr::str_extract(part2, "(?<=-).*")) |>
     massive_cw() |>
+    # TEMPORARY - there are some campaign names starting with DNU_ (for now, dropping from name)
+    dplyr::mutate(paid_initiative_name = ifelse(stringr::str_detect(paid_initiative_name, "^DNU"),
+                                    stringr::str_remove(paid_initiative_name, "^[^_]*_"),
+                                    paid_initiative_name)) |>
     # now split out the campaign nomenclature
     tidyr::separate(paid_initiative_name, sep = "_", into = camp_taxonomy, remove = FALSE) |>
     dplyr::mutate(dplyr::across(c_client_code, ~clut$client_code[.]),
