@@ -89,7 +89,8 @@ get_matrix_data <- function(master_ids,
 
     } else if (platform == "Snapchat") {
       name_lookup <- c(placement_name = "placement_name_new",
-                       placement_name = "new_placement_name")
+                       placement_name = "new_placement_name",
+                       post_text = "post_copy")
 
       googlesheets4::read_sheet(link, sheet = sheet) |>
         janitor::row_to_names(row_number = 2) |>
@@ -116,7 +117,8 @@ get_matrix_data <- function(master_ids,
 
     } else if (platform == "Nextdoor") {
       name_lookup <- c(placement_name = "placement_name_new",
-                       placement_name = "new_placement_name")
+                       placement_name = "new_placement_name",
+                       post_text = "post_copy")
 
       googlesheets4::read_sheet(link, sheet = sheet) |>
         janitor::row_to_names(row_number = 2) |>
@@ -143,7 +145,8 @@ get_matrix_data <- function(master_ids,
 
     } else if (platform == "Pinterest") {
       name_lookup <- c(placement_name = "placement_name_new",
-                       placement_name = "new_placement_name")
+                       placement_name = "new_placement_name",
+                       post_text = "post_copy")
 
       googlesheets4::read_sheet(link, sheet = sheet) |>
         janitor::row_to_names(row_number = 2) |>
@@ -172,7 +175,8 @@ get_matrix_data <- function(master_ids,
 
     } else if (platform == "Reddit") {
       name_lookup <- c(placement_name = "placement_name_new",
-                       placement_name = "new_placement_name")
+                       placement_name = "new_placement_name",
+                       post_text = "post_copy")
 
       googlesheets4::read_sheet(link, sheet = sheet) |>
         janitor::row_to_names(row_number = 2) |>
@@ -198,9 +202,11 @@ get_matrix_data <- function(master_ids,
                       creative_agency, mmm_category, ad_unit, price_point, cta, creative_asset,
                       post_headline, additional_text, campaign_tactic, customer_type, geographic_target,
                       market, click_thru_url, prisma_io_campaign_name, placement_name)
+
     } else if (platform == "TikTok") {
       name_lookup <- c(placement_name = "placement_name_new",
-                       placement_name = "new_placement_name")
+                       placement_name = "new_placement_name",
+                       post_text = "post_copy")
 
       googlesheets4::read_sheet(link, sheet = sheet) |>
         janitor::row_to_names(row_number = 2) |>
