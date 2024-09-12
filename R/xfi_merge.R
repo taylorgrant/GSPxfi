@@ -30,20 +30,18 @@ xfi_merge <- function(lob){
                                      lob == "Retargeting" ~ c_mmm_category == "Retargeting"))
   } else {
     # otherwise use the ad account
-    if (lob == "Internet/Product Diff") { # extra requirements for this LOB
-      tmp_sprinklr <- sprinklr_data |>
-        dplyr::filter(stringr::str_detect(ad_account, "Corporate") &
-                        stringr::str_detect(ad_account, "Spark")) |>
-        apply_nomenclature()
+    res <- switch(lob,
+             "Central" = "CEN|Central",
+             "West" = "West",
+             "NED" = "NED",
+             "Internet/Product Diff" = "Comcast - Xfinity HQ|Corporate - Spark|Corporate Snap Ads - Spark",
+             "Retargeting" = "Retargeting",
+             "Xfinity Mobile" = "Xfinity Mobile")
 
-    } else {
-
       tmp_sprinklr <- sprinklr_data |>
-        dplyr::filter(stringr::str_detect(ad_account, lob)) |>
+        dplyr::filter(stringr::str_detect(ad_account, res)) |>
         apply_nomenclature()
     }
-  }
-
 
   # fuzzy full join sprinklr data to matrix data
   if (any(stringr::str_detect(names(tmp_sprinklr), "facebook"))) {
