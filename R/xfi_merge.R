@@ -25,13 +25,23 @@ xfi_merge <- function(lob){
       dplyr::filter(dplyr::case_when(lob == "Central" ~ c_client_code == "Comcast Central",
                                      lob == "NED" ~ c_client_code == "Comcast North",
                                      lob == "West" ~ c_client_code == "Comcast West",
+                                     lob == "Internet/Product Diff" ~ c_client_code == "Comcast Corporate",
                                      lob == "Xfinity Mobile" ~ c_mmm_category == "Xfinity Mobile",
                                      lob == "Retargeting" ~ c_mmm_category == "Retargeting"))
   } else {
     # otherwise use the ad account
-    tmp_sprinklr <- sprinklr_data |>
-      dplyr::filter(stringr::str_detect(ad_account, lob)) |>
-      apply_nomenclature()
+    if (lob == "Internet/Product Diff") { # extra requirements for this LOB
+      tmp_sprinklr <- sprinklr_data |>
+        dplyr::filter(stringr::str_detect(ad_account, "Corporate") &
+                        stringr::str_detect(ad_account, "Spark")) |>
+        apply_nomenclature()
+
+    } else {
+
+      tmp_sprinklr <- sprinklr_data |>
+        dplyr::filter(stringr::str_detect(ad_account, lob)) |>
+        apply_nomenclature()
+    }
   }
 
 
