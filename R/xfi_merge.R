@@ -15,7 +15,7 @@
 #' \dontrun{
 #' merged <- xfi_merge("West")
 #' }
-xfi_merge <- function(sprinklr_data, lob){
+xfi_merge <- function(sprinklr_data, matrix_data, lob){
   # filter down to specific LOB
 
   # pinterest only uses a single ad account, so must use the client_code or mmm_category
