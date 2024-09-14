@@ -6,6 +6,8 @@
 #'
 #' Running the function also checks how well the merge worked and reports the results in the console.
 #'
+#' @param sprinklr_data Name of sprinklr dataset in memory
+#' @param matrix_data Name of social matrix data in memory
 #' @param lob The line of business of interest
 #'
 #' @return Dataframe of merged data (Sprinklr with Social Matrix data)

@@ -4,9 +4,13 @@
 \alias{xfi_merge}
 \title{Merge Social Matrix data with Sprinklr}
 \usage{
-xfi_merge(lob)
+xfi_merge(sprinklr_data, matrix_data, lob)
 }
 \arguments{
+\item{sprinklr_data}{Name of sprinklr dataset in memory}
+
+\item{matrix_data}{Name of social matrix data in memory}
+
 \item{lob}{The line of business of interest}
 }
 \value{
