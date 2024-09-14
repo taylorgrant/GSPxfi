@@ -33,7 +33,7 @@ clean_headers <- function(tbl){
         view50 = facebook_video_plays_to_50_percent_sum,
         view75 = facebook_video_plays_to_75_percent_sum,
         video_completes = facebook_video_plays_to_100_percent_sum,
-        avg_duration = facebook_avg_duration_of_video_played_sum,
+        avg_duration = facebook_avg_duration_of_video_played_avg,
         platform_site_visits = facebook_landing_page_views_sum,
         platform_purchases = facebook_purchase_facebook_pixel_sum,
         platform_leads = facebook_lead_facebook_pixel_sum,
