@@ -76,7 +76,8 @@ get_matrix_data <- function(master_ids,
                                flight_date_start_date, flight_date_end_date),
                       keep_empty = TRUE) |>
         dplyr::mutate(dplyr::across(dplyr::matches("date"), lubridate::ymd),
-                      placement_name = stringr::str_replace_all(placement_name, " _", "_"),
+                      placement_name = stringr::str_replace_all(placement_name, " _|  _", "_"),
+                      placement_name = stringr::str_remove_all(placement_name, "\\$"), # drop $ characters
                       placement_name = ifelse(stringr::str_count(placement_name, "_") == 0, NA, placement_name) # if there aren't underscores, NA
         ) |>
         # keep only lines with a placement name (or should it be prisma campaign name?)
@@ -105,7 +106,8 @@ get_matrix_data <- function(master_ids,
                                flight_date_start_date, flight_date_end_date),
                       keep_empty = TRUE) |>
         dplyr::mutate(dplyr::across(dplyr::matches("date"), lubridate::ymd),
-                      placement_name = stringr::str_replace_all(placement_name, " _", "_"),
+                      placement_name = stringr::str_replace_all(placement_name, " _|  _", "_"),
+                      placement_name = stringr::str_remove_all(placement_name, "\\$"), # drop $ characters
                       placement_name = ifelse(stringr::str_count(placement_name, "_") == 0, NA, placement_name) # if there aren't underscores, NA
         ) |>
         # keep only lines with a placement name (or should it be prisma campaign name?)
@@ -133,7 +135,8 @@ get_matrix_data <- function(master_ids,
                                flight_date_start_date, flight_date_end_date),
                       keep_empty = TRUE) |>
         dplyr::mutate(dplyr::across(dplyr::matches("date"), lubridate::ymd),
-                      placement_name = stringr::str_replace_all(placement_name, " _", "_"),
+                      placement_name = stringr::str_replace_all(placement_name, " _|  _", "_"),
+                      placement_name = stringr::str_remove_all(placement_name, "\\$"), # drop $ characters
                       placement_name = ifelse(stringr::str_count(placement_name, "_") == 0, NA, placement_name) # if there aren't underscores, NA
         ) |>
         # keep only lines with a placement name (or should it be prisma campaign name?)
@@ -163,7 +166,8 @@ get_matrix_data <- function(master_ids,
                                flight_date_start_date, flight_date_end_date),
                       keep_empty = TRUE) |>
         dplyr::mutate(dplyr::across(dplyr::matches("date"), lubridate::ymd),
-                      placement_name = stringr::str_replace_all(placement_name, " _", "_"),
+                      placement_name = stringr::str_replace_all(placement_name, " _|  _", "_"),
+                      placement_name = stringr::str_remove_all(placement_name, "\\$"), # drop $ characters
                       placement_name = ifelse(stringr::str_count(placement_name, "_") == 0, NA, placement_name) # if there aren't underscores, NA
         ) |>
         # keep only lines with a placement name (or should it be prisma campaign name?)
@@ -193,7 +197,8 @@ get_matrix_data <- function(master_ids,
                                flight_date_start_date, flight_date_end_date),
                       keep_empty = TRUE) |>
         dplyr::mutate(dplyr::across(dplyr::matches("date"), lubridate::ymd),
-                      placement_name = stringr::str_replace_all(placement_name, " _", "_"),
+                      placement_name = stringr::str_replace_all(placement_name, " _|  _", "_"),
+                      placement_name = stringr::str_remove_all(placement_name, "\\$"), # drop $ characters
                       placement_name = ifelse(stringr::str_count(placement_name, "_") == 0, NA, placement_name) # if there aren't underscores, NA
         ) |>
         # keep only lines with a placement name (or should it be prisma campaign name?)
@@ -223,7 +228,8 @@ get_matrix_data <- function(master_ids,
                                flight_date_start_date, flight_date_end_date),
                       keep_empty = TRUE) |>
         dplyr::mutate(dplyr::across(dplyr::matches("date"), lubridate::ymd),
-                      placement_name = stringr::str_replace_all(placement_name, " _", "_"),
+                      placement_name = stringr::str_replace_all(placement_name, " _|  _", "_"),
+                      placement_name = stringr::str_remove_all(placement_name, "\\$"), # drop $ characters
                       placement_name = ifelse(stringr::str_count(placement_name, "_") == 0, NA, placement_name) # if there aren't underscores, NA
         ) |>
         # keep only lines with a placement name (or should it be prisma campaign name?)

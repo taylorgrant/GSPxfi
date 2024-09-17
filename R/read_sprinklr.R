@@ -16,5 +16,6 @@ read_sprinklr <- function(file_location) {
     dplyr::mutate(spent_in_usd_sum = as.numeric(stringr::str_remove_all(spent_in_usd_sum, "\\$"))) |>
     dplyr::filter(spent_in_usd_sum > 0) |>
     # fix the gap spacing in the placement names
-    dplyr::mutate(ad_variant_name = stringr::str_replace_all(ad_variant_name, " _|  _", "_"))
+    dplyr::mutate(ad_variant_name = stringr::str_replace_all(ad_variant_name, " _|  _", "_"),
+                  ad_variant_name = stringr::str_remove_all(ad_variant_name, "\\$"))
 }
