@@ -50,7 +50,9 @@ apply_nomenclature <- function(tbl) {
                   # if the string begins with a number, keep everything after ["number_"]
                   part1 = ifelse(stringr::str_detect(part1, "^[0-9]"), stringr::str_remove(part1, "^[^_]*_"), part1),
                   # if a hyphen in creative part, keep as spark creative note
-                  spark_note = stringr::str_extract(part2, "(?<=-).*")) |>
+                  spark_note = stringr::str_extract(part2, "(?<=-).*"),
+                  # dropping trailing dash and hyphen - trying for better fuzzy match (DO I KEEP?)
+                  ad_variant_name  = str_replace(ad_variant_name, "[-/][^-/]*$", "")) |>
     massive_cw() |>
     # TEMPORARY - there are some campaign names starting with DNU_ (for now, dropping from name)
     dplyr::mutate(paid_initiative_name = ifelse(stringr::str_detect(paid_initiative_name, "^DNU"),
