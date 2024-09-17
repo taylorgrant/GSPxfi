@@ -136,7 +136,9 @@ clean_headers <- function(tbl){
         view50 = tik_tok_video_views_at_50_percent_sum,
         view75 = tik_tok_video_views_at_75_percent_sum,
         video_completes = tik_tok_video_views_at_100_percent_sum,
-        avg_duration = tik_tok_average_watch_time_per_video_view_avg
+        avg_duration = tik_tok_average_watch_time_per_video_view_avg,
+        creative_detail = required_field_for_creative_launch,
+        prisma_campaign = prisma_io_campaign_name
       )
   }
 }
