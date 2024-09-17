@@ -69,7 +69,9 @@ clean_headers <- function(tbl){
         platform_purchases = snapchat_conversion_purchases_sum,
         story_opens = snapchat_story_opens_sum,
         story_completes = snapchat_story_completes_sum,
-        avg_screen_time = snapchat_avg_screen_time_sum
+        avg_screen_time = snapchat_avg_screen_time_sum,
+        creative_detail = required_field_for_creative_launch,
+        prisma_campaign = prisma_io_campaign_name
       )
   } else if (any(stringr::str_detect(names(tbl), "pinterest"))) {
     tbl |>
@@ -93,7 +95,9 @@ clean_headers <- function(tbl){
         avg_duration = pinterest_paid_video_view_average_watch_time_in_seconds_avg,
         conversions = pinterest_total_conversions_sum,
         clickthru_checkout = pinterest_checkout_click_through_sum,
-        viewthru_checkout = pinterest_checkout_view_through_sum
+        viewthru_checkout = pinterest_checkout_view_through_sum,
+        creative_detail = required_field_for_creative_launch,
+        prisma_campaign = prisma_io_campaign_name
       )
   } else if (any(stringr::str_detect(names(tbl), "reddit"))) {
     tbl |>
@@ -111,7 +115,9 @@ clean_headers <- function(tbl){
         view50 = reddit_watches_at_50_percent_sum,
         view75 = reddit_watches_at_75_percent_sum,
         video_completes = reddit_watches_at_100_percent_sum,
-        video_full = reddit_full_video_views_sum
+        video_full = reddit_full_video_views_sum,
+        creative_detail = required_field_for_creative_launch,
+        prisma_campaign = prisma_io_campaign_name
       )
   } else if (any(stringr::str_detect(names(tbl), "tik_tok"))) {
     tbl |>
