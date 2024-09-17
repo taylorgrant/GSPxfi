@@ -52,7 +52,8 @@ apply_nomenclature <- function(tbl) {
                   # if a hyphen in creative part, keep as spark creative note
                   spark_note = stringr::str_extract(part2, "(?<=-).*"),
                   # dropping trailing dash and hyphen - trying for better fuzzy match (DO I KEEP?)
-                  ad_variant_name  = str_replace(ad_variant_name, "[-/][^-/]*$", "")) |>
+                  # ad_variant_name  = str_replace(ad_variant_name, "[-/][^-/]*$", "")
+                  ) |>
     massive_cw() |>
     # TEMPORARY - there are some campaign names starting with DNU_ (for now, dropping from name)
     dplyr::mutate(paid_initiative_name = ifelse(stringr::str_detect(paid_initiative_name, "^DNU"),
