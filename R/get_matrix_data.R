@@ -141,7 +141,7 @@ get_matrix_data <- function(master_ids,
         ) |>
         # keep only lines with a placement name (or should it be prisma campaign name?)
         dplyr::filter(!is.na(placement_name)) |>
-        dplyr::select(campaign_detail = required_field_for_creative_launch, flight_date_start_date, flight_date_end_date,
+        dplyr::select(creative_detail = required_field_for_creative_launch, flight_date_start_date, flight_date_end_date,
                       creative_agency, mmm_category, ad_unit, price_point, cta, creative_asset,
                       headline, body_copy, offer_text, campaign_tactic, customer_type, geographic_target,
                       market, click_thru_url, prisma_campaign = prisma_io_campaign_name, placement_name)
@@ -203,7 +203,7 @@ get_matrix_data <- function(master_ids,
         ) |>
         # keep only lines with a placement name (or should it be prisma campaign name?)
         dplyr::filter(!is.na(placement_name)) |>
-        dplyr::select(campaign_detail = required_field_for_creative_launch, flight_date_start_date, flight_date_end_date,
+        dplyr::select(creative_detail = required_field_for_creative_launch, flight_date_start_date, flight_date_end_date,
                       creative_agency, mmm_category, ad_unit, price_point, cta, creative_asset,
                       post_headline, additional_text, campaign_tactic, customer_type, geographic_target,
                       market, click_thru_url, prisma_campaign = prisma_io_campaign_name, placement_name)
