@@ -36,9 +36,7 @@ clean_headers <- function(tbl){
         avg_duration = facebook_avg_duration_of_video_played_avg,
         platform_site_visits = facebook_landing_page_views_sum,
         platform_purchases = facebook_purchase_facebook_pixel_sum,
-        platform_leads = facebook_lead_facebook_pixel_sum,
-        creative_detail = required_field_for_creative_launch,
-        prisma_campaign = prisma_io_campaign_name
+        platform_leads = facebook_lead_facebook_pixel_sum
       ) |>
       dplyr::mutate(platform_position = paste(platform,
                                        trimws(stringr::str_remove(platform_position,
@@ -69,9 +67,7 @@ clean_headers <- function(tbl){
         platform_purchases = snapchat_conversion_purchases_sum,
         story_opens = snapchat_story_opens_sum,
         story_completes = snapchat_story_completes_sum,
-        avg_screen_time = snapchat_avg_screen_time_sum,
-        creative_detail = required_field_for_creative_launch,
-        prisma_campaign = prisma_io_campaign_name
+        avg_screen_time = snapchat_avg_screen_time_sum
       )
   } else if (any(stringr::str_detect(names(tbl), "pinterest"))) {
     tbl |>
@@ -138,9 +134,7 @@ clean_headers <- function(tbl){
         view50 = tik_tok_video_views_at_50_percent_sum,
         view75 = tik_tok_video_views_at_75_percent_sum,
         video_completes = tik_tok_video_views_at_100_percent_sum,
-        avg_duration = tik_tok_average_watch_time_per_video_view_avg,
-        creative_detail = required_field_for_creative_launch,
-        prisma_campaign = prisma_io_campaign_name
+        avg_duration = tik_tok_average_watch_time_per_video_view_avg
       )
   }
 }

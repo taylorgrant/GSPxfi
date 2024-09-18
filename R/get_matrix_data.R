@@ -83,10 +83,10 @@ get_matrix_data <- function(master_ids,
         # keep only lines with a placement name (or should it be prisma campaign name?)
         dplyr::filter(!is.na(placement_name)) |>
         # keeping certain columns
-        dplyr::select(required_field_for_creative_launch, flight_date_start_date, flight_date_end_date,
+        dplyr::select(creative_detail = required_field_for_creative_launch, flight_date_start_date, flight_date_end_date,
                       creative_agency, mmm_category, ad_unit, price_point, cta,
                       post_text, post_headline, campaign_tactic, customer_type, geographic_target,
-                      market, click_thru_url, prisma_io_campaign_name, placement_name)
+                      market, click_thru_url, prisma_campaign = prisma_io_campaign_name, placement_name)
 
     } else if (platform == "Snapchat") {
       name_lookup <- c(placement_name = "placement_name_new",
@@ -112,10 +112,10 @@ get_matrix_data <- function(master_ids,
         ) |>
         # keep only lines with a placement name (or should it be prisma campaign name?)
         dplyr::filter(!is.na(placement_name)) |>
-        dplyr::select(required_field_for_creative_launch, flight_date_start_date, flight_date_end_date,
+        dplyr::select(creative_detail = required_field_for_creative_launch, flight_date_start_date, flight_date_end_date,
                       creative_agency, mmm_category, ad_unit, price_point, cta, creative_asset,
                       headline, discover_title_headline, campaign_tactic, customer_type, geographic_target,
-                      market, click_thru_url, prisma_io_campaign_name, placement_name)
+                      market, click_thru_url, prisma_campaign = prisma_io_campaign_name, placement_name)
 
     } else if (platform == "Nextdoor") {
       name_lookup <- c(placement_name = "placement_name_new",
@@ -141,10 +141,10 @@ get_matrix_data <- function(master_ids,
         ) |>
         # keep only lines with a placement name (or should it be prisma campaign name?)
         dplyr::filter(!is.na(placement_name)) |>
-        dplyr::select(required_field_for_creative_launch, flight_date_start_date, flight_date_end_date,
+        dplyr::select(campaign_detail = required_field_for_creative_launch, flight_date_start_date, flight_date_end_date,
                       creative_agency, mmm_category, ad_unit, price_point, cta, creative_asset,
                       headline, body_copy, offer_text, campaign_tactic, customer_type, geographic_target,
-                      market, click_thru_url, prisma_io_campaign_name, placement_name)
+                      market, click_thru_url, prisma_campaign = prisma_io_campaign_name, placement_name)
 
     } else if (platform == "Pinterest") {
       name_lookup <- c(placement_name = "placement_name_new",
@@ -172,10 +172,10 @@ get_matrix_data <- function(master_ids,
         ) |>
         # keep only lines with a placement name (or should it be prisma campaign name?)
         dplyr::filter(!is.na(placement_name)) |>
-        dplyr::select(required_field_for_creative_launch, flight_date_start_date, flight_date_end_date,
+        dplyr::select(creative_detail = required_field_for_creative_launch, flight_date_start_date, flight_date_end_date,
                       creative_agency, mmm_category, ad_unit, price_point, cta, creative_asset,
                       pin_description, pin_headline, board, campaign_tactic, customer_type, geographic_target,
-                      market, click_thru_url, prisma_io_campaign_name, placement_name)
+                      market, click_thru_url, prisma_campaign = prisma_io_campaign_name, placement_name)
 
     } else if (platform == "Reddit") {
       name_lookup <- c(placement_name = "placement_name_new",
@@ -203,10 +203,10 @@ get_matrix_data <- function(master_ids,
         ) |>
         # keep only lines with a placement name (or should it be prisma campaign name?)
         dplyr::filter(!is.na(placement_name)) |>
-        dplyr::select(required_field_for_creative_launch, flight_date_start_date, flight_date_end_date,
+        dplyr::select(campaign_detail = required_field_for_creative_launch, flight_date_start_date, flight_date_end_date,
                       creative_agency, mmm_category, ad_unit, price_point, cta, creative_asset,
                       post_headline, additional_text, campaign_tactic, customer_type, geographic_target,
-                      market, click_thru_url, prisma_io_campaign_name, placement_name)
+                      market, click_thru_url, prisma_campaign = prisma_io_campaign_name, placement_name)
 
     } else if (platform == "TikTok") {
       name_lookup <- c(placement_name = "placement_name_new",
@@ -234,10 +234,10 @@ get_matrix_data <- function(master_ids,
         ) |>
         # keep only lines with a placement name (or should it be prisma campaign name?)
         dplyr::filter(!is.na(placement_name)) |>
-        dplyr::select(required_field_for_creative_launch, flight_date_start_date, flight_date_end_date,
+        dplyr::select(creative_detail = required_field_for_creative_launch, flight_date_start_date, flight_date_end_date,
                       creative_agency, mmm_category, ad_unit, price_point, cta, creative_asset,
                       post_text, campaign_tactic, customer_type, geographic_target,
-                      market, click_thru_url, prisma_io_campaign_name, placement_name)
+                      market, click_thru_url, prisma_campaign = prisma_io_campaign_name, placement_name)
     }
   }
   out <- tmpout |>
