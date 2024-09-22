@@ -23,7 +23,9 @@ get_matrix_data <- function(master_ids,
   options(gargle_oauth_email = email)
 
   if (line == "Retargeting" && !platform %in% c("Meta", "Pinterest")) {
-    stop("\nFunction Stopped: Retargeting tactics are only used with Meta & Pinterest")
+    # stop("\nFunction Stopped: Retargeting tactics are only used with Meta & Pinterest")
+    message("\nSkipping this combination: Retargeting tactics are only used with Meta & Pinterest")
+    return(NULL)
   }
 
   # filter the master IDs down to the link that we're interested in
