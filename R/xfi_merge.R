@@ -18,6 +18,7 @@
 #' merged <- xfi_merge("West")
 #' }
 xfi_merge <- function(sprinklr_data, matrix_data, lob){
+  line <- lob
   # filter down to specific LOB
 
   # pinterest only uses a single ad account, so must use the client_code or mmm_category
@@ -95,11 +96,9 @@ xfi_merge <- function(sprinklr_data, matrix_data, lob){
       dplyr::filter(!is.na(campaign_name))
   }
 
-
-
   # report out on where we're missing
   report1 <- tmp_full |>
-    dplyr::mutate(LOB = lob,
+    dplyr::mutate(LOB = line,
                   Merged = ifelse(is.na(placement_name), "NOT MATCHED", "MATCHED")) |>
     dplyr::group_by(LOB, Merged) |>
     dplyr::summarise(Placements = dplyr::n(),
