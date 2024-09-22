@@ -17,7 +17,11 @@ merge_all_lobs <- function(platform, email_address, sprinklr_data) {
   # putting functions together
   merge_all <- function(lob, platform, data) {
     matrix_data <- get_matrix_data(master_ids = master_ids, line = lob, platform = platform, email = email_address)
-    merged <- xfi_merge(sprinklr_data = data, matrix_data = matrix_data, lob = lob)
+    if (nrow(matrix_data) == 0) {
+      return()
+    } else {
+      merged <- xfi_merge(sprinklr_data = data, matrix_data = matrix_data, lob = lob)
+    }
   }
   if (platform %in% c("Meta", "Pinterest")) {
     lobs <- c("Central", "Internet/Product Diff", "NED", "Retargeting",  "West", "Xfinity Mobile")
