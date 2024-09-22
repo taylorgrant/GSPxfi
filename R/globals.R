@@ -49,7 +49,8 @@ utils::globalVariables(c("cell", "hyperlink", "lob", "loc",
                          "tik_tok_shares_sum", "tik_tok_video_views_at_100_percent_sum",
                          "tik_tok_video_views_at_25_percent_sum", "tik_tok_video_views_at_50_percent_sum",
                          "tik_tok_video_views_at_75_percent_sum", "tik_tok_video_views_sum",
-                         "total_results_for_objective_sum"))
+                         "total_results_for_objective_sum",
+                         "facebook_avg_duration_of_video_played_avg", "master_ids"))
 
 
 
