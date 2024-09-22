@@ -99,10 +99,9 @@ xfi_merge <- function(sprinklr_data, matrix_data, lob){
 
   # report out on where we're missing
   report1 <- tmp_full |>
-    dplyr::mutate(Platform = unique(channel),
-                  LOB = lob,
+    dplyr::mutate(LOB = lob,
                   Merged = ifelse(is.na(placement_name), "NOT MATCHED", "MATCHED")) |>
-    dplyr::group_by(Platform, LOB, Merged) |>
+    dplyr::group_by(LOB, Merged) |>
     dplyr::summarise(Placements = dplyr::n(),
                      Spend = scales::dollar(sum(spend, na.rm = TRUE))) |>
     knitr::kable(format = "rst")
