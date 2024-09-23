@@ -50,7 +50,12 @@ utils::globalVariables(c("cell", "hyperlink", "lob", "loc",
                          "tik_tok_video_views_at_25_percent_sum", "tik_tok_video_views_at_50_percent_sum",
                          "tik_tok_video_views_at_75_percent_sum", "tik_tok_video_views_sum",
                          "total_results_for_objective_sum",
-                         "facebook_avg_duration_of_video_played_avg", "master_ids", "LOB"))
+                         "facebook_avg_duration_of_video_played_avg", "master_ids", "LOB",
+                         "clicks", "comments", "engagements", "follows", "likes", "outbound_clicks",
+                         "platform_purchases", "profile_visits", "reach", "saves", "shares", "story_completes",
+                         "story_opens", "video_completes", "video_full", "video_starts", "video_views",
+                         "video_views15fv", "video_views2", "video_views3", "video_views6", "video_views6fv",
+                         "view25", "view50", "view75"))
 
 
 
