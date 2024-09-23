@@ -106,6 +106,9 @@ The returned data also returns average performance for each grouping -
 the averages are split out by Video and Static where appropriate (for
 example, TikTok is only video, so there are no static averages).
 
+All averages are based on the total creative out from all agencies, but
+the creative data is filtered down to only GS&P.
+
 ``` r
 meta_sum <- merged_summarise(merged_meta, group_vars = c("platform", "ad_media_type", "platform_position", "ad_objective", "creative_detail"))
 ```
