@@ -64,6 +64,7 @@ merged_summarise <- function(data, group_vars){
     # summarise data and bind averages
     data |>
       dplyr::filter(spend > 0) |>
+      dplyr::filter(creative_agency == "GSP") |>
       dplyr::filter(!is.na(platform)) |>
       dplyr::group_by(dplyr::across(dplyr::all_of(group_vars))) |>
       summarise_meta() |>
@@ -110,6 +111,7 @@ merged_summarise <- function(data, group_vars){
     # summarise data and bind averages
     data |>
       dplyr::filter(spend > 0) |>
+      dplyr::filter(creative_agency == "GSP") |>
       dplyr::filter(!is.na(platform)) |>
       dplyr::group_by(dplyr::across(dplyr::all_of(group_vars))) |>
       summarise_snap() |>
@@ -152,6 +154,7 @@ merged_summarise <- function(data, group_vars){
     # summarise data and bind averages
     data |>
       dplyr::filter(spend > 0) |>
+      dplyr::filter(creative_agency == "GSP") |>
       dplyr::filter(!is.na(platform)) |>
       dplyr::group_by(dplyr::across(dplyr::all_of(group_vars))) |>
       summarise_tiktok() |>
@@ -193,6 +196,7 @@ merged_summarise <- function(data, group_vars){
     # summarise data and bind averages
     data |>
       dplyr::filter(spend > 0) |>
+      dplyr::filter(creative_agency == "GSP") |>
       dplyr::filter(!is.na(platform)) |>
       dplyr::group_by(dplyr::across(dplyr::all_of(group_vars))) |>
       summarise_reddit() |>
@@ -237,6 +241,7 @@ merged_summarise <- function(data, group_vars){
     # summarise data and bind averages
     data |>
       dplyr::filter(spend > 0) |>
+      dplyr::filter(creative_agency == "GSP") |>
       dplyr::filter(!is.na(platform)) |>
       dplyr::group_by(dplyr::across(dplyr::all_of(group_vars))) |>
       summarise_pinterest() |>
