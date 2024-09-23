@@ -13,6 +13,9 @@ merge_all_lobs(platform, email_address, sprinklr_data)
 
 \item{sprinklr_data}{Platform specific Sprinklr data that had been read into memory}
 }
+\value{
+Merged dataframe with Sprinklr and Social Matrix data
+}
 \description{
 If you want to merge all LOB data at once, this function will do it
 }

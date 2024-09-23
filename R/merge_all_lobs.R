@@ -6,7 +6,7 @@
 #' @param email_address Email address that has access to the social matrices
 #' @param sprinklr_data Platform specific Sprinklr data that had been read into memory
 #'
-#' @return
+#' @return Merged dataframe with Sprinklr and Social Matrix data
 #' @export
 #'
 #' @examples
