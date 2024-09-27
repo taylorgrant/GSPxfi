@@ -65,6 +65,12 @@ The Social Matrices are organized by LOB and social platform. This
 function will pull in all data from each matrix - this includes some
 hidden sheets.
 
+**LOB/Line:** Central, Internet/Product Diff, NED, Retargeting, West,
+Xfinity Mobile
+
+**Platforms:** LinkedIn, Meta, Pinterest, Reddit, Snapchat, TikTok,
+Twitter
+
 ``` r
 matrix_data <- get_matrix_data(master_ids = master_ids, line = "Central", platform = "Meta", email = "email_address")
 ```
@@ -85,9 +91,11 @@ The above functions work by platform and LOB. But if the user wants to
 merge all LOBs with a complete Sprinklr data set, there is a wrapper
 function that will do that.
 
-There are certain LOBs that only apply to certain platforms. This
-function accounts for that. It is also able to work around empty
-matrices.
+The user doesn’t have to have the `matrix_data` for this function to
+run. Based on the platform, the function will get all matrix data and
+merge it with the Sprinklr data. There are certain LOBs that only apply
+to certain platforms. This function accounts for that. It is also able
+to work around empty matrices.
 
 ``` r
 merged_meta <- merge_all_lobs(platform = 'Meta', email_address = "email_address", sprinklr_data = meta)
