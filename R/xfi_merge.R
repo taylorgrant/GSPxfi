@@ -28,7 +28,7 @@ xfi_merge <- function(sprinklr_data, matrix_data, lob){
       dplyr::filter(dplyr::case_when(lob == "Central" ~ c_client_code == "Comcast Central",
                                      lob == "NED" ~ c_client_code == "Comcast North",
                                      lob == "West" ~ c_client_code == "Comcast West",
-                                     lob == "Internet/Product Diff" & c_mmm_category != "Xfinity Mobile" ~ c_client_code == "Comcast Corporate",
+                                     lob == "Internet/Product Diff" & c_mmm_category != "Xfinity Mobile" & c_mmm_category != "Retargeting" ~ c_client_code == "Comcast Corporate",
                                      lob == "Xfinity Mobile" ~ c_mmm_category == "Xfinity Mobile",
                                      lob == "Retargeting" ~ c_mmm_category == "Retargeting"))
   } else {
