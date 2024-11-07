@@ -4,7 +4,7 @@
 \alias{merge_all_lobs}
 \title{Merge all LOBs}
 \usage{
-merge_all_lobs(platform, email_address, sprinklr_data)
+merge_all_lobs(platform, matrix_ids, email_address, sprinklr_data)
 }
 \arguments{
 \item{platform}{Platform of interest (Meta, Pinterest, Snpachat, Reddit, TikTok)}
@@ -12,6 +12,8 @@ merge_all_lobs(platform, email_address, sprinklr_data)
 \item{email_address}{Email address that has access to the social matrices}
 
 \item{sprinklr_data}{Platform specific Sprinklr data that had been read into memory}
+
+\item{master_ids}{The file of matrix IDs used}
 }
 \value{
 Merged dataframe with Sprinklr and Social Matrix data
@@ -21,6 +23,6 @@ If you want to merge all LOB data at once, this function will do it
 }
 \examples{
 \dontrun{
-merged_meta <- merge_all_lobs("Meta", "first_last@gspsf.com", sprinklr_meta)
+merged_meta <- merge_all_lobs("Meta", "master_ids_q4", "first_last@gspsf.com", sprinklr_meta)
 }
 }
