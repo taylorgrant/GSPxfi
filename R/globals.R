@@ -55,7 +55,7 @@ utils::globalVariables(c("cell", "hyperlink", "lob", "loc",
                          "platform_purchases", "profile_visits", "reach", "saves", "shares", "story_completes",
                          "story_opens", "video_completes", "video_full", "video_starts", "video_views",
                          "video_views15fv", "video_views2", "video_views3", "video_views6", "video_views6fv",
-                         "view25", "view50", "view75"))
+                         "view25", "view50", "view75", "master_ids"))
 
 
 

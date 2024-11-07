@@ -26,7 +26,8 @@ get_matrix_ids <- function(sheet, full_range, email) {
   list_text <- googlesheets4::read_sheet(ss, sheet = sheet) |>
     janitor::clean_names() |>
     dplyr::select(1:2) |>
-    tidyr::fill(lob, .direction = "down")
+    tidyr::fill(lob, .direction = "down") |>
+    dplyr::rename(matrix_type = 2)
   # read in hyperlinks
   cells <- googlesheets4::range_read_cells(ss, sheet = sheet, range = glue::glue("A1:{full_range}"), cell_data = "full")
   # function to extract hyperlinks

@@ -3,7 +3,7 @@
 #' If you want to merge all LOB data at once, this function will do it
 #'
 #' @param platform Platform of interest (Meta, Pinterest, Snpachat, Reddit, TikTok)
-#' @param master_ids The file of matrix IDs used
+#' @param matrix_ids The file of matrix IDs used
 #' @param email_address Email address that has access to the social matrices
 #' @param sprinklr_data Platform specific Sprinklr data that had been read into memory
 #'

@@ -9,11 +9,11 @@ merge_all_lobs(platform, matrix_ids, email_address, sprinklr_data)
 \arguments{
 \item{platform}{Platform of interest (Meta, Pinterest, Snpachat, Reddit, TikTok)}
 
+\item{matrix_ids}{The file of matrix IDs used}
+
 \item{email_address}{Email address that has access to the social matrices}
 
 \item{sprinklr_data}{Platform specific Sprinklr data that had been read into memory}
-
-\item{master_ids}{The file of matrix IDs used}
 }
 \value{
 Merged dataframe with Sprinklr and Social Matrix data
