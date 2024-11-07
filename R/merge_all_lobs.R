@@ -13,10 +13,10 @@
 #' \dontrun{
 #' merged_meta <- merge_all_lobs("Meta", "first_last@gspsf.com", sprinklr_meta)
 #' }
-merge_all_lobs <- function(platform, email_address, sprinklr_data) {
+merge_all_lobs <- function(platform, matrix_ids, email_address, sprinklr_data) {
   # putting functions together
   merge_all <- function(lob, platform, data) {
-    matrix_data <- get_matrix_data(master_ids = master_ids, line = lob, platform = platform, email = email_address)
+    matrix_data <- get_matrix_data(master_ids = matrix_ids, line = lob, platform = platform, email = email_address)
     if (nrow(matrix_data) == 0) {
       return()
     } else {
