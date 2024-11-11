@@ -20,7 +20,6 @@
 xfi_merge <- function(sprinklr_data, matrix_data, lob){
   # filter down to specific LOB
   line <- lob
-  cat("\n",crayon::bgRed(crayon::black(crayon::bold(glue::glue("Merging data from the {lob} lob...")))))
 
   # pinterest only uses a single ad account, so must use the client_code or mmm_category
   if (any(stringr::str_detect(names(sprinklr_data), "pinterest|reddit"))) {
