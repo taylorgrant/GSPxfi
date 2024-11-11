@@ -24,7 +24,7 @@ get_matrix_data <- function(master_ids,
           googlesheets4_quiet = TRUE)
 
   # message to console so user knows where data is pulled
-  cat("\n",crayon::bgRed(crayon::black(crayon::bold(glue::glue("Merging data from the {line} lob...")))))
+  cat("\n",crayon::bgRed(crayon::black(crayon::bold(glue::glue("Downloading and merging data from the {line} lob...")))),"\n")
 
   if (line == "Retargeting" && !platform %in% c("Meta", "Pinterest")) {
     # stop("\nFunction Stopped: Retargeting tactics are only used with Meta & Pinterest")
