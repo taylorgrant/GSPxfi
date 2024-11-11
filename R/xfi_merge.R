@@ -102,7 +102,7 @@ xfi_merge <- function(sprinklr_data, matrix_data, lob){
                   Merged = ifelse(is.na(placement_name), "NOT MATCHED", "MATCHED")) |>
     dplyr::group_by(LOB, Merged) |>
     dplyr::summarise(Placements = dplyr::n(),
-                     Spend = scales::dollar(sum(spend, na.rm = TRUE))) |>
+                     Spend = scales::dollar(round(sum(spend, na.rm = TRUE)))) |>
     knitr::kable(format = "rst")
 
   cat("\n",crayon::bgBlue(crayon::black(crayon::bold("Checking in on how many placements were successfully merged..."))))
@@ -112,7 +112,7 @@ xfi_merge <- function(sprinklr_data, matrix_data, lob){
     dplyr::mutate(Merged = ifelse(is.na(placement_name), "NOT MATCHED", "MATCHED")) |>
     dplyr::group_by(campaign_name, Merged) |>
     dplyr::summarise(Placements = dplyr::n(),
-                     Spend = scales::dollar(sum(spend, na.rm = TRUE)), .groups = "keep") |>
+                     Spend = scales::dollar(round(sum(spend, na.rm = TRUE))), .groups = "keep") |>
     knitr::kable(format = "rst")
   cat("\n",crayon::bgBlue(crayon::black(crayon::bold("Breaking down merged placements by campaign..."))))
   print(report2)
