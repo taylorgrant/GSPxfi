@@ -20,7 +20,8 @@ get_matrix_data <- function(master_ids,
                                          "Reddit", "Snapchat", "TikTok", "Twitter"),
                             email){
   # authenticate googledrive & googlesheets
-  options(gargle_oauth_email = email)
+  options(gargle_oauth_email = email,
+          googlesheets4_quiet = TRUE)
 
   if (line == "Retargeting" && !platform %in% c("Meta", "Pinterest")) {
     # stop("\nFunction Stopped: Retargeting tactics are only used with Meta & Pinterest")
