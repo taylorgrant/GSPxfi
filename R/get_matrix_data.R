@@ -96,7 +96,7 @@ get_matrix_data <- function(master_ids,
                        placement_name = "new_placement_name",
                        post_text = "post_copy")
 
-      googlesheets4::read_sheet(link, sheet = sheet) |>
+      suppressMessages(googlesheets4::read_sheet(link, sheet = sheet)) |>
         janitor::row_to_names(row_number = 2) |>
         janitor::clean_names() |>
         # rename any columns that don't have the same names
