@@ -24,7 +24,7 @@ get_matrix_data <- function(master_ids,
           googlesheets4_quiet = TRUE)
 
   # message to console so user knows where data is pulled
-  cat("\n",crayon::bgRed(crayon::black(crayon::bold(glue::glue("Downloading and merging data from the {line} lob...")))),"\n")
+  cat("\n",crayon::bgRed(crayon::black(crayon::bold(glue::glue("{line}:")))),"\n")
 
   if (line == "Retargeting" && !platform %in% c("Meta", "Pinterest")) {
     # stop("\nFunction Stopped: Retargeting tactics are only used with Meta & Pinterest")
@@ -247,6 +247,6 @@ get_matrix_data <- function(master_ids,
     }
   }
   out <- tmpout |>
-    dplyr::mutate(matrix_data = purrr::map2(hyperlink, name, get_sheet_data)) |>
+    dplyr::mutate(matrix_data = suppressWarnings(purrr::map2(hyperlink, name, get_sheet_data))) |>
     dplyr::filter(purrr::map_int(matrix_data, nrow) > 0) # drop any rows with 0 data
 }
