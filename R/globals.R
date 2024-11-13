@@ -42,11 +42,11 @@ utils::globalVariables(c("cell", "hyperlink", "lob", "loc",
                          "snapchat_story_completes_sum", "snapchat_story_opens_sum",
                          "snapchat_unique_reach_sum", "snapchat_video_views_sum",
                          "snapchat_view_completion_sum", "spark_note",
-                         "tik_tok_15_second_views_focused_view_sum", "tik_tok_2s_video_views_sum",
-                         "tik_tok_6_second_views_focused_view_sum", "tik_tok_6s_video_views_sum",
-                         "tik_tok_average_watch_time_per_video_view_avg", "tik_tok_comments_sum",
-                         "tik_tok_follows_sum", "tik_tok_likes_sum", "tik_tok_profile_visits_sum",
-                         "tik_tok_shares_sum", "tik_tok_video_views_at_100_percent_sum",
+                         "tik_tok_15_second_focused_views_sum", "tik_tok_2_second_video_views_sum",
+                         "tik_tok_6_second_focused_views_sum", "tik_tok_6_second_video_views_sum",
+                         "tik_tok_average_watch_time_per_video_view_avg", "tik_tok_paid_comments_sum",
+                         "tik_tok_paid_follows_sum", "tik_tok_paid_likes_sum", "tik_tok_paid_profile_visits_sum",
+                         "tik_tok_paid_shares_sum", "tik_tok_video_views_at_100_percent_sum",
                          "tik_tok_video_views_at_25_percent_sum", "tik_tok_video_views_at_50_percent_sum",
                          "tik_tok_video_views_at_75_percent_sum", "tik_tok_video_views_sum",
                          "total_results_for_objective_sum",
@@ -55,7 +55,7 @@ utils::globalVariables(c("cell", "hyperlink", "lob", "loc",
                          "platform_purchases", "profile_visits", "reach", "saves", "shares", "story_completes",
                          "story_opens", "video_completes", "video_full", "video_starts", "video_views",
                          "video_views15fv", "video_views2", "video_views3", "video_views6", "video_views6fv",
-                         "view25", "view50", "view75", "master_ids"))
+                         "view25", "view50", "view75", "master_ids", "creative_detail", "location"))
 
 
 
