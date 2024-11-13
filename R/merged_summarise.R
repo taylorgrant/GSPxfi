@@ -5,7 +5,7 @@
 #' @param data Merged dataset
 #' @param group_vars Variables to group by
 #'
-#' @return Dataframw with summarized media KPIs
+#' @return Dataframe with summarized media KPIs
 #' @export
 #'
 #' @examples
