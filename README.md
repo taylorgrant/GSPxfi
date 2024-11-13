@@ -120,3 +120,48 @@ the creative data is filtered down to only GS&P.
 ``` r
 meta_sum <- merged_summarise(merged_meta, group_vars = c("platform", "ad_media_type", "platform_position", "ad_objective", "creative_detail"))
 ```
+
+### Estimate creative decay / creative wearout
+
+If the platform data is at the daily level, then we can estimate
+creative wearout using a simple wrapper function - `decay_build()`. The
+function takes the merged dataset, and aggregates the data down using
+the `merged_summarise()` function based upon the group_vars passed
+through as an argument. *Note - one of the group_vars must be “date”,
+without the date, the function can’t estimate the daily decay.* It then
+estimates the daily exponential and logarithmic decay of the creative
+based upon a specific KPI.
+
+The `decay_build()` function takes the following as arguments - the
+daily data for a specific platform, the group_vars to group by
+(including date), and the KPI/DV of interest. There are a number of DVs
+that are created - to see them all reference the code for
+`merged_summarise()`.
+
+As an example, let’s assume that I’ve merged the Sprinklr and matrix
+data from Tiktok. Estimating creative wearout is simple. Here we want to
+group by the platform, the ad objective, the creative detail (the
+creative name), and the date:
+
+``` r
+decay_tiktok <- decay_build(merged_tiktok, group_vars = c("platform", "ad_objective", "creative_detail", "date"), dv = "avg_duration")
+```
+
+The function returns a named list with two objects - “plot_list” (the
+daily data for reference and for plotting), and “results_table” (a
+dataframe with the decay rates for each piece of creative). Each
+creative has two rows, the first row has the results for the exponential
+model, the second for the logarithmic model. If the decay rate is both
+negative and statistically significant, the column “significant” will
+say TRUE, otherwise it’s FALSE.
+
+#### Plotting the predicted decay versus actuals
+
+If a piece of creative has a significant decay, then we can visualize
+it. The “results_table” provides an ID number for each piece of
+creative. We use that, along with the “plot_list” data to easily plot
+the results. Note that we have to specify the same DV again.
+
+``` r
+fit_decay_models(decay_tiktok$plot_list[[22]], "avg_duration", day = "day", plot = TRUE)
+```
