@@ -23,9 +23,12 @@ r-squared, and AIC. An ID is also provided for easy plotting - see ?fit_decay_mo
 }
 \examples{
 \dontrun{
+# tiktok
 decay_tiktok <- decay_build(merged_tiktok,
 group_vars = c("platform", "ad_objective", "creative_detail", "date"),
 dv = "avg_duration")
+
+# meta
 decay_meta <- decay_build(subset(merged_meta, ad_media_type == "Video"),
 group_vars = c("platform", "platform_position", "ad_objective", "creative_detail", "date"),
 dv = "avg_duration")

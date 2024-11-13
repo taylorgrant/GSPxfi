@@ -81,7 +81,7 @@ merged <- xfi_merge(sprinklr_data = meta, matrix_data = matrix_data, lob = "Cent
 
 The above functions work by platform and LOB. But if the user wants to merge all LOBs with a complete Sprinklr data set, there is a wrapper function that will do that. 
 
-The user doesn't have to have the `matrix_data` for this function to run. Based on the platform, the function will get all matrix data and merge it with the Sprinklr data. There are certain LOBs that only apply to certain platforms. This function accounts for that. It is also able to work around empty matrices. 
+The user should have to have the `matrix_data` for this function to run. This way the user has the ability to run more than quarter of data at a time. This is especially useful if certain pieces of creative run for longer time periods. There are certain LOBs that only apply to certain platforms. This function accounts for that. It is also able to work around empty matrices. 
 
 ```{r, eval = FALSE}
 merged_meta <- merge_all_lobs(platform = 'Meta', email_address = "email_address", sprinklr_data = meta)
@@ -93,19 +93,19 @@ With merged data, the user can then summarize the media KPIs by specifying the g
 
 The returned data also returns average performance for each grouping - the averages are split out by Video and Static where appropriate (for example, TikTok is only video, so there are no static averages). 
 
-All averages are based on the total creative out from all agencies, but the creative data is filtered down to only GS&P. 
+All averages are based on the total creative output from all agencies, but the creative data is filtered down to only GS&P. 
 
 ```{r, eval = FALSE}
 meta_sum <- merged_summarise(merged_meta, group_vars = c("platform", "ad_media_type", "platform_position", "ad_objective", "creative_detail"))
 ```
 
-### Estimate creative decay / creative wearout
+### Estimating creative decay / creative wearout
 
-If the platform data is at the daily level, then we can estimate creative wearout using a simple wrapper function - `decay_build()`. The function takes the merged dataset, and aggregates the data down using the `merged_summarise()` function based upon the group_vars passed through as an argument. *Note - one of the group_vars must be "date", without the date, the function can't estimate the daily decay.* It then estimates the daily exponential and logarithmic decay of the creative based upon a specific KPI. 
+If the platform data from Sprinklr is at the daily level, then we can estimate creative wearout using a simple wrapper function - `decay_build()`. The function takes the merged dataset, and aggregates the data down using the `merged_summarise()` function based upon the `group_vars` passed through as an argument. *Note - one of the group_vars must be "date", without the date, the function can't estimate the daily decay.* It then estimates the daily exponential and logarithmic decay of the creative based upon a specific KPI. At this point, because social creative tends to not run for extended periods of time there isn't much use in aggregating to the weekly level.  
 
-The `decay_build()` function takes the following as arguments - the daily data for a specific platform, the group_vars to group by (including date), and the KPI/DV of interest. There are a number of DVs that are created - to see them all reference the code for `merged_summarise()`. 
+The `decay_build()` function takes the following as arguments - the merged daily data for a specific platform (e.g., "merged_meta" from above), the group_vars to group by (including date), and the KPI of interest (the KPI is the DV in the regression models). There are a number of DVs that are created via the `merged_summarise()` function - to see them all reference the code for `merged_summarise()`. 
 
-As an example, let's assume that I've merged the Sprinklr and matrix data from Tiktok. Estimating creative wearout is simple. Here we want to group by the platform, the ad objective, the creative detail (the creative name), and the date: 
+As an example, let's assume that I've merged the Sprinklr and matrix data from Tiktok. Estimating creative wearout is simple. Here we want to group by the platform, the ad objective, the creative detail (the creative name), and the date. The KPI of interest is the average duration of watchtime per video: 
 
 ```{r, eval = FALSE}
 decay_tiktok <- decay_build(merged_tiktok, group_vars = c("platform", "ad_objective", "creative_detail", "date"), dv = "avg_duration")

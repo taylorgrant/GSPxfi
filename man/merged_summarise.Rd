@@ -12,7 +12,7 @@ merged_summarise(data, group_vars)
 \item{group_vars}{Variables to group by}
 }
 \value{
-Dataframw with summarized media KPIs
+Dataframe with summarized media KPIs
 }
 \description{
 This function allows the user to specify what to group by and then summarises all metrics within the platform. It also calculates overall averages for both video and static for each grouping
